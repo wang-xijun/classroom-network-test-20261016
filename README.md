@@ -4,7 +4,8 @@
 
 - GitHub Pages：https://wang-xijun.github.io/classroom-network-test-20261016/
 - 源仓库：https://github.com/wang-xijun/classroom-network-test-20261016
-- Cloudflare 后端与 D1：尚未部署，等待用户自己的 Cloudflare 授权。`public/config.js` 中 `apiBase: null` 表示未上线，不使用虚构地址。
+- Cloudflare 后端与直达页：https://classroom-network-test-20261016.classroom-network-comparison.workers.dev/
+- 用户自己的 Cloudflare D1 已创建并初始化；具体线上检查见 `VERIFICATION.md`。
 
 ## 范围与数据
 
