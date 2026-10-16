@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="GitHub Pages 与 Cloudflare Workers / D1 网络对照测试，不收集学生资料。"><title>课堂网络 · 对照测试</title><link rel="stylesheet" href="style.css"><script src="config.js" defer></script><script src="app.js" defer></script></head><body><main>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="GitHub Pages 与 Cloudflare Workers / D1 网络对照测试，不收集学生资料。"><title>课堂网络 · 对照测试</title><link rel="stylesheet" href="style.css"><script src="config.js?v=20261016-live1" defer></script><script src="app.js" defer></script></head><body><main>
 <header><span class="eyebrow">CLASSROOM / NETWORK CHECK</span><h1>分三步，找到连接卡在哪里。</h1><p>分别检查页面、后端、数据库。请用校园网和手机流量各测一次。</p></header>
 <section class="card"><span class="step">01 / 前端页面</span><h2>页面已打开 <span class="badge">成功</span></h2><p id="host">当前页面</p><small>看到此页说明页面资源已返回；浏览器缓存可能影响复测，可刷新后再试。</small></section>
 <section class="card"><span class="step">02 / 实时后端</span><h2>连到 Cloudflare Workers</h2><p>每次请求都核对随机标识和服务器时间，不使用缓存。</p><button id="ping" disabled>正在检查配置…</button><div id="ping-result" class="result" role="status" aria-live="polite">尚未测试</div></section>
