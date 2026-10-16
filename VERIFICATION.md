@@ -7,14 +7,14 @@
 - Cloudflare 直达页与 API：https://classroom-network-test-20261016.classroom-network-comparison.workers.dev/
 - 资源属于用户 OAuth 登录的 Cloudflare 账户。没有使用 Sites 平台账户、临时预览账户、付费升级或域名购买。
 - 专用 D1：`classroom-network-test-20261016`，ID `edc37799-82b4-426e-89a9-355a9c92caa4`，区域 WNAM。
-- Workers 当前部署版本：`40923c5b-bf91-4cbd-bb7a-ffedf9d4133a`（随后仅修改静态配置加载的缓存版本参数，后端相同）。
+- Workers 当前部署版本：`299e4ad2-b04a-4c48-976c-d636bffb6635`，最终静态配置加载版本参数已同步发布。
 
 ## 已验证
 
 - 官方 Wrangler 4.151.0 确认用户已 OAuth 登录；未打印或保存认证令牌到项目。
 - 订阅 API 返回 403，OAuth 无账单读取权限。账户为用户本次新注册账户，沿用官方默认 Workers Free；未执行任何订阅变更，不能声称通过账单接口独立确认套餐。
 - GitHub 配置为 `main` 分支 `/docs`。接入后端的提交 `2085acec868d82fd6420e76b7b1ac3b45dd11a57` 对应发布任务 https://github.com/wang-xijun/classroom-network-test-20261016/actions/runs/38851455210 成功。
-- GitHub 首页 HTTP 200（约 0.84 秒）；带新查询参数的 config.js HTTP 200。旧无参数配置曾返回缓存，页面已增加配置版本参数。
+- GitHub 首页 HTTP 200（约 0.84 秒）；带新查询参数的 config.js HTTP 200，并确认包含实际 Workers 地址。旧无参数配置曾返回缓存，页面已增加配置版本参数。此后本机对 GitHub 的复查也曾出现 TLS 连接失败，说明当前网络访问有波动。
 - 本地 Node SQLite 的 7 项检查通过：真实迁移与分离写读、来源与预检限制、请求大小与字段限制、500 次原子写入上限、过期记录读取、限流和同源静态页。
 - 本地 Workers/D1 模拟器迁移成功，实际 HTTP：首页 200、ping 200、预检 204、写入 201、独立读取 200 且 marker 匹配、不允许来源 403。
 - 远程 D1 迁移成功。通过官方管理接口写入 UUID `79d662d4-d830-4e13-aa8c-331b52cba5db` 的虚拟记录，并以独立 SQL 查询读回核对。此项验证远程数据库，不代表公开 API 链路成功。
