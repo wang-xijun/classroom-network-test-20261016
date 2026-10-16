@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="GitHub Pages 与 Cloudflare Workers / D1 网络对照测试，不收集学生资料。"><title>课堂网络 · 对照测试</title><link rel="stylesheet" href="style.css"><script src="config.js" defer></script><script src="app.js" defer></script></head><body><main>
+<header><span class="eyebrow">CLASSROOM / NETWORK CHECK</span><h1>分三步，找到连接卡在哪里。</h1><p>分别检查页面、后端、数据库。请用校园网和手机流量各测一次。</p></header>
+<section class="card"><span class="step">01 / 前端页面</span><h2>页面已打开 <span class="badge">成功</span></h2><p id="host">当前页面</p><small>看到此页说明页面资源已返回；浏览器缓存可能影响复测，可刷新后再试。</small></section>
+<section class="card"><span class="step">02 / 实时后端</span><h2>连到 Cloudflare Workers</h2><p>每次请求都核对随机标识和服务器时间，不使用缓存。</p><button id="ping" disabled>正在检查配置…</button><div id="ping-result" class="result" role="status" aria-live="polite">尚未测试</div></section>
+<section class="card"><span class="step">03 / 数据库写读</span><h2>存入一条虚拟记录，再读回来</h2><p>只发送两个随机标识。先写入 Cloudflare D1，再发出独立请求按标识读取并核对。</p><button id="db" disabled>正在检查配置…</button><div id="db-result" class="result" role="status" aria-live="polite">尚未测试</div><small>为限制测试用量，整个测试数据库最多写入 500 条记录。超过 24 小时的记录不可通过接口读取；测试结束后可删除独立数据库。</small></section>
+<section class="card"><span class="step">换一个入口，再比一次</span><h2>区分 GitHub 与 Cloudflare 的网络问题</h2><p id="configuration" role="status">正在读取后端配置…</p><p><a id="direct" hidden>打开 Cloudflare 直达测试页 →</a></p><p><a href="https://wang-xijun.github.io/classroom-network-test-20261016/">打开 GitHub Pages 测试页 →</a></p><ol><li>先连接校园网，刷新并完成两项按钮测试。</li><li>关闭 Wi-Fi，使用手机流量，再做一次。</li><li>若 GitHub 页能开而后端失败，尝试 Cloudflare 直达页，对比结果。</li></ol><p>自行记录网络类型、错误提示和耗时；本页不会上传测试结果汇总。</p></section>
+<footer>无姓名、学号、答题内容和登录；不计成绩。只保存虚拟随机标识及写入时间。无分析脚本、无浏览器持久化；托管平台可能有常规访问日志。单次成功不代表多人并发或所有网络可达。</footer>
+<noscript><p>请启用 JavaScript，才能运行后端与数据库测试。</p></noscript>
+</main></body></html>
